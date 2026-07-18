@@ -157,13 +157,13 @@ All protected routes require `Authorization: Bearer <token>`.
 ## Screenshots
 
 ### Login
-![Login Page](./screenshots/login.png)
+![Login Page](./screenshots/Login.png)
 
 ### Dashboard
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](./screenshots/Dashboard.png)
 
 ### Employees Page
-![Employees](./Screenshots/My%20Profile.png)
+![Employees](./screenshots/My%20Profile.png)
 
 ### Organization Hierarchy
 ![Hierarchy](./screenshots/Origanization%20Hierarchy.png)
