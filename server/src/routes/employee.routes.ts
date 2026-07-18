@@ -54,8 +54,8 @@ router.put(
 router.delete(
     "/:id",
     protect,
-    authorize("Super Admin", "HR Manager"),
+    authorize("Super Admin"),
     deleteEmployee
-);
+);  
 
 export default router;

@@ -44,6 +44,13 @@ export const createEmployee = async (req: Request, res: Response) => {
             manager,
         } = req.body;
 
+        if (role === "Super Admin" && req.employee?.role !== "Super Admin") {
+            return res.status(403).json({
+                success: false,
+                message: "Only a Super Admin can assign the Super Admin role.",
+            });
+        }
+
         // Check existing employee by email only — employeeId is auto-generated below
         const existingEmployee = await Employee.findOne({ email });
 
@@ -228,12 +235,17 @@ export const updateEmployee = async (req: Request, res: Response) => {
         );
 
         if (isSelf && !isPrivileged) {
-            // An "Employee" editing their own profile can only touch these
-            // fields — role, salary, department, manager, status stay locked.
             employee.name = name ?? employee.name;
             employee.phone = phone ?? employee.phone;
             employee.profileImage = profileImage ?? employee.profileImage;
         } else {
+            if (role === "Super Admin" && req.employee?.role !== "Super Admin") {
+                return res.status(403).json({
+                    success: false,
+                    message: "Only a Super Admin can assign the Super Admin role.",
+                });
+            }
+
             if (manager && manager !== String(employee.manager ?? "")) {
                 const cycle = await wouldCreateCycle(id, manager);
 
