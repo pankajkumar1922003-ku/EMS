@@ -34,7 +34,7 @@ const Login = () => {
 
       login(response.token, response.employee);
 
-      toast.success("Welcome! Demo login successful");
+      toast.success("Welcome to EMS! Demo login successful");
 
       navigate("/");
     } catch (error: any) {
